@@ -1,0 +1,50 @@
+{
+  "name": "knowledge-feed-learning",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "dev:api": "node server/llm-proxy.mjs",
+    "dev:all": "npm run dev:api & npm run dev",
+    "build": "tsc -b && vite build",
+    "e2e:real-llm": "node scripts/real-llm-e2e.mjs",
+    "e2e:real-llm:external-chrome": "KNOWFEED_E2E_EXTERNAL_CHROME=1 npm run e2e:real-llm",
+    "e2e:real-llm:architecture": "KNOWFEED_E2E_SCENARIOS=architecture-city-renewal KNOWFEED_E2E_VIEWPORTS=mobile npm run e2e:real-llm",
+    "e2e:real-llm:architecture:archive": "mkdir -p .omx/evidence/knowfeed && KNOWFEED_E2E_RETRY_LLM_FALLBACKS=0 KNOWFEED_E2E_OUTPUT_DIR=${KNOWFEED_E2E_OUTPUT_DIR:-.omx/evidence/knowfeed/$(date -u +%Y%m%dT%H%M%SZ)-architecture} npm run e2e:real-llm:architecture",
+    "e2e:real-llm:matrix": "KNOWFEED_E2E_REQUIRE_BREADTH=1 KNOWFEED_E2E_SCENARIOS=fintech-engineer,psychology-casual,climate-policy-planner KNOWFEED_E2E_VIEWPORTS=mobile npm run e2e:real-llm",
+    "e2e:real-llm:matrix:full": "KNOWFEED_E2E_REQUIRE_BREADTH=1 KNOWFEED_E2E_MIN_VIEWPORTS=3 KNOWFEED_E2E_MIN_PASSED_RUNS=9 KNOWFEED_E2E_SCENARIOS=fintech-engineer,psychology-casual,climate-policy-planner KNOWFEED_E2E_VIEWPORTS=mobile,laptop,desktop npm run e2e:real-llm",
+    "e2e:real-llm:matrix:wide": "KNOWFEED_E2E_REQUIRE_BREADTH=1 KNOWFEED_E2E_MIN_SUBJECT_AREAS=4 KNOWFEED_E2E_MIN_LEARNER_PERSONAS=4 KNOWFEED_E2E_MIN_PASSED_RUNS=4 KNOWFEED_E2E_SCENARIOS=photography-operator,education-course-designer,classical-music-listener,sengoku-history-editor KNOWFEED_E2E_VIEWPORTS=mobile npm run e2e:real-llm",
+    "e2e:real-llm:matrix:wide:full": "KNOWFEED_E2E_REQUIRE_BREADTH=1 KNOWFEED_E2E_MIN_SUBJECT_AREAS=4 KNOWFEED_E2E_MIN_LEARNER_PERSONAS=4 KNOWFEED_E2E_MIN_VIEWPORTS=3 KNOWFEED_E2E_MIN_PASSED_RUNS=12 KNOWFEED_E2E_SCENARIOS=photography-operator,education-course-designer,classical-music-listener,sengoku-history-editor KNOWFEED_E2E_VIEWPORTS=mobile,laptop,desktop npm run e2e:real-llm",
+    "e2e:real-llm:matrix:expanded": "KNOWFEED_E2E_REQUIRE_BREADTH=1 KNOWFEED_E2E_MIN_SUBJECT_AREAS=5 KNOWFEED_E2E_MIN_LEARNER_PERSONAS=5 KNOWFEED_E2E_MIN_PASSED_RUNS=5 KNOWFEED_E2E_SCENARIOS=photography-operator,education-course-designer,classical-music-listener,sengoku-history-editor,architecture-city-renewal KNOWFEED_E2E_VIEWPORTS=mobile npm run e2e:real-llm",
+    "e2e:real-llm:matrix:expanded:full": "KNOWFEED_E2E_REQUIRE_BREADTH=1 KNOWFEED_E2E_MIN_SUBJECT_AREAS=5 KNOWFEED_E2E_MIN_LEARNER_PERSONAS=5 KNOWFEED_E2E_MIN_VIEWPORTS=3 KNOWFEED_E2E_MIN_PASSED_RUNS=15 KNOWFEED_E2E_SCENARIOS=photography-operator,education-course-designer,classical-music-listener,sengoku-history-editor,architecture-city-renewal KNOWFEED_E2E_VIEWPORTS=mobile,laptop,desktop npm run e2e:real-llm",
+    "e2e:real-llm:matrix:expanded:full:archive": "mkdir -p .omx/evidence/knowfeed && KNOWFEED_E2E_RETRY_LLM_FALLBACKS=0 KNOWFEED_E2E_OUTPUT_DIR=${KNOWFEED_E2E_OUTPUT_DIR:-.omx/evidence/knowfeed/$(date -u +%Y%m%dT%H%M%SZ)-expanded-full} npm run e2e:real-llm:matrix:expanded:full",
+    "probe:llm-provider": "node scripts/probe-llm-provider.mjs",
+    "verify:docs": "node scripts/verify-docs.mjs",
+    "verify:evidence-archive": "node scripts/verify-evidence-archive.mjs",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "verify:contracts": "vitest run server/llm-proxy.test.mjs src/domain/*.test.ts --pool=threads --maxWorkers=1 --no-file-parallelism",
+    "verify:local": "vitest run --pool=threads --maxWorkers=1 --no-file-parallelism && tsc -b && vite build"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^7.2.7",
+    "typescript": "^5.9.3",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "jsdom": "26.1.0",
+    "vitest": "^4.0.15"
+  }
+}

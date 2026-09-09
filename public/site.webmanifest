@@ -1,0 +1,19 @@
+{
+  "name": "KnowFeed",
+  "short_name": "KnowFeed",
+  "description": "A mobile-first learning feed prototype.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fbfcfe",
+  "theme_color": "#fbfcfe",
+  "icons": [
+    {
+      "src": "/knowfeed-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="KnowFeed icon">
+  <rect width="180" height="180" rx="36" fill="#fbfcfe"/>
+  <path d="M42 51h62c20 0 34 14 34 32s-14 32-34 32H76l-26 24v-24h-8z" fill="#102431"/>
+  <path d="M68 74h45v12H68zM68 96h32v12H68z" fill="#fbfcfe"/>
+  <circle cx="128" cy="119" r="18" fill="#25a36f"/>
+  <path d="M119 119l6 6 13-16" fill="none" stroke="#fbfcfe" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

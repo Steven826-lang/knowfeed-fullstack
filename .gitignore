@@ -1,0 +1,30 @@
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Build and tool outputs
+dist/
+*.tsbuildinfo
+coverage/
+.vite/
+
+# Local environment and logs
+.env
+.env.*
+!.env.example
+*.log
+
+# Local orchestration/runtime state
+.omc/
+.omx/
+.superpowers/
+.pytest_cache/
+
+# Empty local marker files
+amp
+
+# Manual verification artifacts
+verification-*.png
+playwright-report/
+test-results/
